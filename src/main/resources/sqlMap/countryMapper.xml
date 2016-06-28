@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ssm.entity.dao.CountryMapper" >
-
+	
+	 <resultMap id="BaseResultMap" type="com.ssm.entity.Country" >
+	    <id column="id" property="id" jdbcType="VARCHAR" />
+	    <result column="countryname" property="countryname" jdbcType="VARCHAR" />
+	    <result column="countrycode" property="countrycode" jdbcType="VARCHAR" />
+	  </resultMap>
+	
+	
  	<select id="getCountry" resultType="com.ssm.entity.Country">
  		select * from country limit 1
+ 	</select>
+ 	
+ 	<select id="getAllCountry" resultType="com.ssm.entity.Country">
+ 		select * from country 
  	</select>
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssm.service.iCountryService;
+import com.github.pagehelper.PageHelper;
 import com.ssm.entity.*;
 
 @Controller
@@ -24,9 +25,19 @@ public class CountryController {
 	}
 	
 	
-	@RequestMapping("/getAllCountry")
+	@RequestMapping("/getCountry")
 	@ResponseBody
-	public Country getAllCountry(){
+	public Country getCountry(){
 		return countryService.getCountry();
 	}
+	
+	
+	@RequestMapping("/getAllCountry")
+	@ResponseBody
+	public List<Country> getAllCountry(){
+		PageHelper.startPage(1,5);
+		return countryService.getAllCountry();
+	}
+	
+	
 }

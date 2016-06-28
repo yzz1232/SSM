@@ -18,6 +18,10 @@ public class CountryServiceImpl implements iCountryService{
 	public Country getCountry() {
 		return countryMapper.getCountry();
 	}
+
+	public List<Country> getAllCountry() {
+		return countryMapper.getAllCountry();
+	}
 	
 	
 }

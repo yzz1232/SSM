@@ -7,4 +7,6 @@ import com.ssm.entity.*;
 public interface CountryMapper {
 	
 	Country getCountry();
+	
+	List<Country> getAllCountry();
 }

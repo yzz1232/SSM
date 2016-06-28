@@ -46,6 +46,20 @@
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
 		<property name="mapperLocations" value="classpath:sqlMap/countryMapper.xml"></property>
+		
+		<!-- 分页插件 -->
+		 <property name="plugins">
+		    <array>
+		      <bean class="com.github.pagehelper.PageHelper">
+		        <property name="properties">
+		          <value>
+		            dialect=mysql
+		          </value>
+		        </property>
+		      </bean>
+		    </array>
+  		</property>
+  		
 	</bean>
 	
 	<!-- mybatis映射文件所对应的Mapper，也就是dao -->
