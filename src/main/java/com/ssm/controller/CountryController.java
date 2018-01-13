@@ -21,6 +21,7 @@ public class CountryController {
 	@RequestMapping("/hello")
 	@ResponseBody
 	public String hello(){
+		System.out.println("111");
 		return "hello";
 	}
 	
