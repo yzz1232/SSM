@@ -15,12 +15,20 @@
                         http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
                         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 	
+	<!-- 可以理解为启用Spring注解 -->
+    <context:annotation-config /> 
+     
+    <!-- 自动扫描 -->  
+    <context:component-scan base-package="com.ssm.study.service.impl" />
+	
 	<!-- 引入配置文件 -->
+		
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:mysql.properties" />
 	</bean>
 
+	
 
 	<!-- 配置连接数据源 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
@@ -74,8 +82,11 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
+    <!-- 采用@Transactional注解方式使用事务   -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="false"/>
+	
 	<!-- 定义使用事务的方法 -->
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    <!-- <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="find*" read-only="true" propagation="SUPPORTS" isolation="READ_COMMITTED"/>
             <tx:method name="get*" read-only="true" propagation="SUPPORTS" isolation="READ_COMMITTED"/>
@@ -83,14 +94,14 @@
             <tx:method name="select*" read-only="true" propagation="SUPPORTS" isolation="READ_COMMITTED"/>
             <tx:method name="*" propagation="REQUIRED" isolation="READ_COMMITTED"/>
         </tx:attributes>
-    </tx:advice>
+    </tx:advice> -->
     
     <!-- 定义一个切入点，使事务在它的切入点内有效 -->
-    <aop:config>
+   <!--  <aop:config>
         <aop:pointcut
             expression="execution(* com.ssm.service.impl.*.*(..))"
             id="pointcut" />
         <aop:advisor pointcut-ref="pointcut" advice-ref="txAdvice" />
-    </aop:config>
+    </aop:config> -->
 
 </beans>
