@@ -16,4 +16,9 @@
  	<select id="getAllCountry" resultType="com.ssm.entity.Country">
  		select * from country 
  	</select>
+ 	
+ 	<insert id="add">
+ 		insert into country values('1','2','3')
+ 	</insert>
+ 	
 </mapper>

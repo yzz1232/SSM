@@ -9,4 +9,6 @@ public interface CountryMapper {
 	Country getCountry();
 	
 	List<Country> getAllCountry();
+	
+	int add();
 }
